@@ -1,0 +1,3 @@
+g++ -Wall Lecture2.cpp
+g++ -o Lecture2 Lecture2.cpp
+./Lecture2
