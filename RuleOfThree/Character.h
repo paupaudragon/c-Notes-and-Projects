@@ -6,7 +6,7 @@
 
 class Character
 {
-    friend std::ostream &operator<<(std::ostream &os, const Character &character);
+     friend std::ostream& operator<<(std::ostream& os, const Character& character);
 
 public:
     static const int DEFAULT_CAPACITY = 5; // tool array size

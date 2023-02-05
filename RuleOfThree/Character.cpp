@@ -6,6 +6,7 @@ Character::Character(string _name, int _capacity)
 {
     name = _name;
     capacity = _capacity;
+    used =0;
     toolHolder = new string[_capacity];
 }
 
@@ -19,10 +20,11 @@ Character::Character(const Character &source)
     this->used = source.used;
     this->toolHolder = new string[source.capacity];                      // need a deep copy, assign space for in on the heap
     copy(source.toolHolder, source.toolHolder + used, toolHolder); // this could be done by a for loop.
+    
 }
 
 // Overloaded Assignment Operator
-Character &Character::operator=(const Character& source)
+Character& Character::operator=(const Character& source)
 {
     cout << "Overloaded Assignment Call" << endl;
 
@@ -48,8 +50,8 @@ Character &Character::operator=(const Character& source)
 // Destructor
 Character::~Character()
 {
-    cout << "Destructor called for" << this->name
-         << "at this mem locaton" << this << endl;
+    cout << "Destructor called for " << this->name
+         << " at this mem locaton" << this << endl;
 
     delete[] toolHolder;
 }
@@ -69,9 +71,10 @@ void Character::insert(const string& toolName)
 }
 
 // Overloaded insertion operator.
-std::ostream &operator<<(std::ostream &os, const Character &character)
+std::ostream& operator<<(std::ostream& os, const Character& character)
 {
-    os << "Character " << character.name << "has the following tools: " << std::endl
+    os << "Character " << character.name << "\nhas the following tools: " 
+    << std::endl
        << "| ";
     for (int i = 0; i < character.used; i++)
     {
