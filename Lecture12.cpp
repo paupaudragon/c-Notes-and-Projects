@@ -1,10 +1,18 @@
 #include <iostream>
 using namespace std;
+class Top{
+    int id; 
+    public:
+     Top(): id(id){
+        cout<<"Top"<<endl;
+    }
+};
 
-class Cat
+
+class Cat: virtual public Top
 {
 public:
-    Cat()
+    Cat():Top(1)
     {
         cout << "Cat constructor" << endl;
     }
@@ -13,10 +21,10 @@ public:
     }
 };
 
-class Drawable
+class Drawable : virtual public Top
 {
 public:
-    Drawable()
+    Drawable(): Top(2)
     {
         cout << "Drawable" << endl;
     }
@@ -30,7 +38,7 @@ class DrawabbleCat : public Cat, public Drawable
 
 public:
     // DrawabbleCat() : Drawable(), Cat()
-    DrawabbleCat() : Cat(), Drawable()
+    DrawabbleCat() : Cat(), Drawable(), Top(3)
     {
         cout << "DrawableCat" << endl;
     }
@@ -41,7 +49,10 @@ public:
 
 int main()
 {
+    Cat c; 
     DrawabbleCat dc;
     cout<<dc.getID()<<endl;
+    cout<<dc.Drawable::getID()<<endl;
+    cout<<sizeof(dc)<<endl;
     return 0;
 }
